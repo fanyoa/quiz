@@ -51,11 +51,18 @@ exports.index = function(req,res){
 		
 	}
 
-	/*var search = '%' + (req.query.search).replace(/ /g,'%') + '%';
-	models.Quiz.findAll({where: ["pregunta like ?", search]}).then(function(quizes){
-		res.render('quizes/index.ejs',{quizes:quizes});
-	}).catch(function(error){next(error);})*/
 };
 exports.author = function(req,res){
 	res.render('author');
 }
+exports.new = function(req,res){
+	var quiz = models.Quiz.build({pregunta:'Pregunta',respuesta:'respuesta'});
+	res.render('quizes/new',{quiz:quiz});
+
+};
+exports.create = function(req,res){
+	var quiz = models.Quiz.build(req.body.quiz);
+	quiz.save({fields:["pregunta","respuesta"]}).then(function(){
+		res.redirect('/quizes');
+	});
+};
