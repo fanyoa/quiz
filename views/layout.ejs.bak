@@ -19,7 +19,14 @@
 		<span><a href="/author">Autor</a></span>
 	</nav>
 	<section class="main" id="s1">
-	<%- body%>
+	<% if (errors.length) { %>
+	    <span id="ErrorMsgs">Corregir errores: <br/>
+	    <% for (var i in errors) { %>
+	     <span> <%=errors[i].message %> </span><br/>
+	    <% } %>
+	    </span>
+	 <% } %>
+	<div><%- body%></div>
 	</section>
 	<footer class="main" id="f1">
 	 <a href="https://github.com/fanyoa/quiz/tree/cr%C3%A9ditos/quiz" target="_new">¿Que es Quiz?</a>
