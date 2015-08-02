@@ -19,12 +19,7 @@
 		<span><a href="/author">Autor</a></span>
 	</nav>
 	<section class="main" id="s1">
-		<div>
-			<table>
-				<tr><td><a href="quizes/1">Capital de Italia</a></td></tr>
-				<tr><td><a href="quizes/2">Capital de Portugal</a></td></tr>
-			</table>
-		</div>
+	<%- body%>
 	</section>
 	<footer class="main" id="f1">
 	 <a href="https://github.com/fanyoa/quiz/tree/cr%C3%A9ditos/quiz" target="_new">¿Que es Quiz?</a>
