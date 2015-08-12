@@ -41,6 +41,23 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+
+app.use(function(req, res, next) {
+	if (req.session.user) {
+	console.log("prueba: " + req.session.user.connectionTime);
+
+		if (Date.now() - req.session.user.connectionTime > 1*60*1000) {
+			delete req.session.user;
+			//req.session.user.connectionTime = null;
+		} else {
+			req.session.user.connectionTime = Date.now();
+		}
+	}
+	next();
+});
+
+
 app.use('/', routes);
 //app.use('/users', users);
 
@@ -76,6 +93,7 @@ app.use(function(err, req, res, next) {
 		errors:[]
     });
 });
+
 
 
 module.exports = app;
